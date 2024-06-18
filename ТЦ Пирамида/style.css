@@ -1,0 +1,97 @@
+:root {
+  --main-bg-color: rgb(241, 227, 227);
+  --second-bg-color: rgb(210, 210, 210);
+}
+body {
+  background-color: var(--main-bg-color);
+}
+.navbar {
+  background-color: var(--main-bg-color);
+  opacity: 80%;
+}
+.cont {
+  padding: 0%;
+}
+.div_zag {
+  border: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-overlay {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1008px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 90%;
+  font-size: 36px;
+}
+.h_2 {
+  margin-bottom: 15px;
+}
+.cards-shop {
+  display: block;
+  border: 2px;
+  border-color: black;
+  margin: 15%;
+  margin-top: 5%;
+}
+.card_m {
+  display: flex;
+}
+.baton {
+  border: 2%;
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-size: 16px;
+  color: black;
+}
+.logo_sh {
+  width: 300;
+  height: 300;
+}
+.img_logo {
+  width: 300;
+  height: 300;
+}
+.spis {
+  display: flex;
+}
+.card {
+  display: flex;
+}
+.banner {
+  margin-bottom: 0%;
+}
+.ban {
+  width: 100%;
+  height: 100%;
+}
+.carousel-inner {
+  background-color: var(--second-bg-color);
+  padding: 5%;
+}
+.photo {
+  border-radius: 30px;
+}
+.descr {
+  background-color: white;
+  padding: 5%;
+  padding-top: 1%;
+  margin-bottom: 0%;
+  margin-left: 7%;
+  border-radius: 30px;
+  padding-right: 0%;
+}
+h3 {
+  margin-left: auto;
+  margin-right: auto;
+}
+.d-block {
+  border-radius: 30px;
+}
