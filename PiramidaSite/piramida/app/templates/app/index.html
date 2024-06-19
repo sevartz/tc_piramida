@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for obj in lst %}
+        {% if forloop.counter0 in nmbr %}
+            <h1>{{ obj }}</h1>
+        {% else %}
+            {% for photo in obj %}
+                <img src="{{ photo.image.url }}">
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

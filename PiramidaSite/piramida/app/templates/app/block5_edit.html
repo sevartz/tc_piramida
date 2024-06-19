@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Block5_edit</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="text">
+        <button type="submit" name="add">Добавить</button>
+    </form>
+    <form method="post">
+        {% csrf_token %}
+        {% for contact in contacts %}
+            {{ contact.text }}
+            <button type="submit" name="delete{{ forloop.counter }}">Удалить</button>
+        {% endfor %}
+    </form>
+</body>
+</html>

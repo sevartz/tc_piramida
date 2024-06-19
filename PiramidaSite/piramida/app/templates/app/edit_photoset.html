@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить фото</title>
+</head>
+<body>
+    <h1>{{ photoset }}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="photos" multiple>
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+</html>

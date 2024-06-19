@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+<body>
+  <h1>Ссылки</h1>
+  <a href="http://127.0.0.1:8000/add_photoset">Добавить альбом</a>
+  <a href="http://127.0.0.1:8000/block1_edit">Изменить блок 1</a>
+  <a href="http://127.0.0.1:8000/block2_edit">Изменить блок 2</a>
+  <a href="http://127.0.0.1:8000/block5_edit">Изменить блок 5</a>
+  <a href="http://127.0.0.1:8000/index">На главную</a>
+  <h1>Сообщения</h1>
+  {% for message in messages %}
+    {{ message.message_name }}
+    {{ message.message_email }}
+    {{ message.message_subject }}
+    {{ message.message_text }}
+  {% endfor %}
+</body>
+</html>

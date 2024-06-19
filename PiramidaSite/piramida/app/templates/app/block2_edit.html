@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Block2_edit</title>
+</head>
+<body>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input name="title" type="text">
+    <input name="text" type="text">
+    <input name="image" type="file">
+    <button type="submit" name="add">Добавить</button>
+  </form>
+  {% for image in images %}
+    <form method="post">
+        {% csrf_token %}
+        <img src="{{ image.image.url }}">
+        <button type="submit" name="delete{{forloop.counter}}">Удалить</button>
+    </form>
+  {% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Block1_edit</title>
+</head>
+<body>
+  <form method="post">
+    {% csrf_token %}
+    <input name="text_input" type="text">
+    <button type="submit" name="text">Добавить</button>
+  </form>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input name="image_input" type="file">
+    <button type="submit" name="image">Добавить</button>
+  </form>
+</body>
+</html>
