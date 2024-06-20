@@ -17,7 +17,7 @@ class Block2(models.Model):
     text = models.CharField(max_length=255)
 
 class Block2_Images(models.Model):
-    image = models.ImageField(upload_to='block1/')
+    image = models.ImageField(upload_to='block2/')
 
 class Block5_contacts(models.Model):
     text = models.CharField(max_length=255)
