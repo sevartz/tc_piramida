@@ -1,9 +1,9 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Photo, PhotoSet, Block1, Block5_messages, Block2_Images, Block2, Block5_contacts
 
 
-def login(request):
+def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -15,7 +15,9 @@ def login(request):
             error_message = 'Неверные учетные данные. Попробуйте еще раз.'
     else:
         error_message = ''
-    return render(request, 'bookingapp/login.html', {'error_message': error_message})
+    return render(request, 'app/login.html',
+                  {'error_message': error_message}
+                  )
 
 
 def add_photoset(request):
@@ -76,29 +78,36 @@ def index(request):
     })
 
 def block1_edit(request):
+    B = get_object_or_404(Block1, id=1)
+    text_block1 = B.text
+    image_block1 = B.image
     if request.method == 'POST':
-        print(request.POST)
-        B = get_object_or_404(Block1, id=1)
         if 'image' in request.POST:
             file = request.FILES.get('image_input')
-            print(file)
-            print(2)
             B.image = file
         if 'text' in request.POST:
             text = request.POST.get('text_input')
             B.inscription = text
+
         B.save()
         return redirect('index')
-    return render(request, 'app/block1_edit.html')
+
+    return render(request, 'app/block1_edit.html', {
+        'image_block1': image_block1,
+        'text_block1': text_block1
+    })
 
 def block2_edit(request):
     images = Block2_Images.objects.all()
+    B = Block2.objects.get(id=1)
+    text_block2 = B.text
+    title_block2 = B.title
+
     if request.method == 'POST':
         if 'add' in request.POST:
             title = request.POST.get('title')
             text = request.POST.get('text')
             image = request.FILES.get('image')
-            B = Block2.objects.get(id=1)
 
             if title != '':
                 B.title = title
@@ -107,11 +116,15 @@ def block2_edit(request):
             if image:
                 Block2_Images.objects.create(id=len(images)+1, image=image)
             B.save()
+
         for i in range(1, 11):
             if f'delete{i}' in request.POST:
                 Block2_Images.objects.filter(id=i).delete()
+
     return render(request, 'app/block2_edit.html', {
         'images': images,
+        'title_block2': title_block2,
+        'text_block2': text_block2,
     })
 
 def block5_edit(request):
@@ -124,6 +137,7 @@ def block5_edit(request):
             if f'delete{i}' in request.POST:
                 Block5_contacts.objects.filter(id=i).delete()
         return redirect('index')
+
     return render(request, 'app/block5_edit.html', {
         'contacts': contacts,
     })
